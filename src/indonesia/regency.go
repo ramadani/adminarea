@@ -1,11 +1,9 @@
 package indonesia
 
 import (
-	"bufio"
+	"bytes"
 	"encoding/csv"
 	"io"
-	"log"
-	"os"
 	"strconv"
 
 	"github.com/ramadani/adminarea/src"
@@ -13,14 +11,14 @@ import (
 
 // Regency regency of indonesia
 type Regency struct {
-	csvFile *os.File
+	contents []byte
 }
 
 // GetRegencies get all regency of indonesia
 func (rg *Regency) GetRegencies() ([]*src.Regency, error) {
 	var regencies []*src.Regency
 
-	reader := csv.NewReader(bufio.NewReader(rg.csvFile))
+	reader := csv.NewReader(bytes.NewReader(rg.contents))
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
@@ -42,11 +40,6 @@ func (rg *Regency) GetRegencies() ([]*src.Regency, error) {
 }
 
 // NewRegency instance of indonesia regency
-func NewRegency(filePath string) *Regency {
-	csvFile, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return &Regency{csvFile}
+func NewRegency(contents []byte) *Regency {
+	return &Regency{contents}
 }

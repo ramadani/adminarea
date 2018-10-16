@@ -1,11 +1,9 @@
 package indonesia
 
 import (
-	"bufio"
+	"bytes"
 	"encoding/csv"
 	"io"
-	"log"
-	"os"
 	"strconv"
 
 	"github.com/ramadani/adminarea/src"
@@ -13,14 +11,14 @@ import (
 
 // Village village of indonesia
 type Village struct {
-	csvFile *os.File
+	contents []byte
 }
 
 // GetVillages get all village of indonesia
 func (vl *Village) GetVillages() ([]*src.Village, error) {
 	var villages []*src.Village
 
-	reader := csv.NewReader(bufio.NewReader(vl.csvFile))
+	reader := csv.NewReader(bytes.NewReader(vl.contents))
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
@@ -42,11 +40,6 @@ func (vl *Village) GetVillages() ([]*src.Village, error) {
 }
 
 // NewVillage instance of indonesia village
-func NewVillage(filePath string) *Village {
-	csvFile, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return &Village{csvFile}
+func NewVillage(contents []byte) *Village {
+	return &Village{contents}
 }

@@ -1,11 +1,9 @@
 package indonesia
 
 import (
-	"bufio"
+	"bytes"
 	"encoding/csv"
 	"io"
-	"log"
-	"os"
 	"strconv"
 
 	"github.com/ramadani/adminarea/src"
@@ -13,14 +11,14 @@ import (
 
 // Province province of indonesia
 type Province struct {
-	csvFile *os.File
+	contents []byte
 }
 
 // GetProvinces get all province
 func (pr *Province) GetProvinces() ([]*src.Province, error) {
 	var provinces []*src.Province
 
-	reader := csv.NewReader(bufio.NewReader(pr.csvFile))
+	reader := csv.NewReader(bytes.NewReader(pr.contents))
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
@@ -40,11 +38,6 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 }
 
 // NewProvince instance of indonesia provinces
-func NewProvince(filePath string) *Province {
-	csvFile, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return &Province{csvFile}
+func NewProvince(contents []byte) *Province {
+	return &Province{contents}
 }

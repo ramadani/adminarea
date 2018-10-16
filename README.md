@@ -5,6 +5,7 @@ Administrative Area
 ### Dependencies
 
 * [urfave/cli](https://github.com/urfave/cli)
+* [jteeuwen/go-bindata](https://github.com/jteeuwen/go-bindata)
 
 ### References
 

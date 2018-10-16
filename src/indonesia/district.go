@@ -1,11 +1,9 @@
 package indonesia
 
 import (
-	"bufio"
+	"bytes"
 	"encoding/csv"
 	"io"
-	"log"
-	"os"
 	"strconv"
 
 	"github.com/ramadani/adminarea/src"
@@ -13,14 +11,14 @@ import (
 
 // District district of indonesia
 type District struct {
-	csvFile *os.File
+	contents []byte
 }
 
 // GetDistricts get all district of indonesia
 func (ds *District) GetDistricts() ([]*src.District, error) {
 	var districts []*src.District
 
-	reader := csv.NewReader(bufio.NewReader(ds.csvFile))
+	reader := csv.NewReader(bytes.NewReader(ds.contents))
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
@@ -42,11 +40,6 @@ func (ds *District) GetDistricts() ([]*src.District, error) {
 }
 
 // NewDistrict instance of indonesia district
-func NewDistrict(filePath string) *District {
-	csvFile, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return &District{csvFile}
+func NewDistrict(contents []byte) *District {
+	return &District{contents}
 }

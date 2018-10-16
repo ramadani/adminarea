@@ -1,14 +1,21 @@
 package indonesia_test
 
 import (
+	"log"
 	"testing"
 
+	idres "github.com/ramadani/adminarea/resources/indonesia"
 	"github.com/ramadani/adminarea/src/indonesia"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestGetVillages(t *testing.T) {
-	village := indonesia.NewVillage("../../resources/indonesia/villages.csv")
+	contents, err := idres.Asset("villages.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	village := indonesia.NewVillage(contents)
 	villages, err := village.GetVillages()
 
 	assert.Nil(t, err)
