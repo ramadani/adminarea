@@ -7,7 +7,7 @@ type Regency struct {
 	ParentID uint
 }
 
-// RegencyContract for contract to province
+// RegencyContract for contract to regency
 type RegencyContract interface {
-	GetRegencies() []*Regency
+	GetRegencies() ([]*Regency, error)
 }
