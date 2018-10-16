@@ -13,14 +13,14 @@ import (
 
 // Province province of indonesia
 type Province struct {
-	CsvFile *os.File
+	csvFile *os.File
 }
 
 // GetProvinces get all province
-func (pr *Province) GetProvinces() ([]src.Province, error) {
-	var provinces []src.Province
+func (pr *Province) GetProvinces() ([]*src.Province, error) {
+	var provinces []*src.Province
 
-	reader := csv.NewReader(bufio.NewReader(pr.CsvFile))
+	reader := csv.NewReader(bufio.NewReader(pr.csvFile))
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
@@ -30,7 +30,7 @@ func (pr *Province) GetProvinces() ([]src.Province, error) {
 		}
 
 		id, _ := strconv.Atoi(line[0])
-		provinces = append(provinces, src.Province{
+		provinces = append(provinces, &src.Province{
 			ID:   uint(id),
 			Name: line[1],
 		})
@@ -46,5 +46,5 @@ func NewProvince(filePath string) *Province {
 		log.Fatal(err)
 	}
 
-	return &Province{CsvFile: csvFile}
+	return &Province{csvFile}
 }
