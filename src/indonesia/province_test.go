@@ -17,7 +17,7 @@ func TestGetProvinces(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.GetCountry("ID")
 
 	province := indonesia.NewProvince(id.ID, contents)
 	provinces, err := province.GetProvinces()

@@ -18,7 +18,7 @@ func TestGetRegencies(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.GetCountry("ID")
 
 	regency := indonesia.NewRegency(id.ID, contents)
 	regencies, err := regency.GetRegencies()

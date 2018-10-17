@@ -17,7 +17,7 @@ func TestGetDistricts(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.GetCountry("ID")
 
 	district := indonesia.NewDistrict(id.ID, contents)
 	districts, err := district.GetDistricts()

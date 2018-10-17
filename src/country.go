@@ -1,6 +1,7 @@
 package src
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -21,14 +22,14 @@ type CountryRepository struct {
 }
 
 // GetCountry by id
-func (c *CountryRepository) GetCountry(id string) *Country {
+func (c *CountryRepository) GetCountry(id string) (*Country, error) {
 	for _, country := range c.countries {
 		if id == country.ID {
-			return country
+			return country, nil
 		}
 	}
 
-	return nil
+	return nil, errors.New("Country is not available")
 }
 
 // NewCountryRepository country repository

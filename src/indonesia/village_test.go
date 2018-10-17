@@ -17,7 +17,7 @@ func TestGetVillages(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.GetCountry("ID")
 
 	village := indonesia.NewVillage(id.ID, contents)
 	villages, err := village.GetVillages()
