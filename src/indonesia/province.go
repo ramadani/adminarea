@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"encoding/csv"
 	"io"
-	"strconv"
 
 	"github.com/ramadani/adminarea/src"
 )
 
 // Province province of indonesia
 type Province struct {
-	countryID uint
+	countryID string
 	contents  []byte
 }
 
@@ -28,9 +27,8 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 			return nil, err
 		}
 
-		id, _ := strconv.Atoi(line[0])
 		provinces = append(provinces, &src.Province{
-			ID:       uint(id),
+			ID:       line[0],
 			Name:     line[1],
 			ParentID: pr.countryID,
 		})
@@ -40,6 +38,6 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 }
 
 // NewProvince instance of indonesia provinces
-func NewProvince(countryID uint, contents []byte) *Province {
+func NewProvince(countryID string, contents []byte) *Province {
 	return &Province{countryID, contents}
 }

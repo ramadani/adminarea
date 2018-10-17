@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/csv"
 	"io"
-	"strconv"
 
 	"github.com/ramadani/adminarea/src"
 )
@@ -27,12 +26,10 @@ func (ds *District) GetDistricts() ([]*src.District, error) {
 			return nil, err
 		}
 
-		id, _ := strconv.Atoi(line[0])
-		pid, _ := strconv.Atoi(line[1])
 		districts = append(districts, &src.District{
-			ID:       uint(id),
+			ID:       line[0],
 			Name:     line[2],
-			ParentID: uint(pid),
+			ParentID: line[1],
 		})
 	}
 

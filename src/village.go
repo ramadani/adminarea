@@ -2,9 +2,9 @@ package src
 
 // Village entity
 type Village struct {
-	ID       uint
+	ID       string
 	Name     string
-	ParentID uint
+	ParentID string
 }
 
 // VillageContract for contract to village

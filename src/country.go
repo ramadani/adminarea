@@ -2,13 +2,13 @@ package src
 
 // Country entity
 type Country struct {
-	ID   uint
+	ID   string
 	Name string
 }
 
 // CountryContract for contract to country
 type CountryContract interface {
-	GetCountry(id uint) *Country
+	GetCountry(id string) *Country
 }
 
 // CountryRepository country repository
@@ -17,7 +17,7 @@ type CountryRepository struct {
 }
 
 // GetCountry by id
-func (c *CountryRepository) GetCountry(id uint) *Country {
+func (c *CountryRepository) GetCountry(id string) *Country {
 	for _, country := range c.countries {
 		if id == country.ID {
 			return country
@@ -31,7 +31,7 @@ func (c *CountryRepository) GetCountry(id uint) *Country {
 func NewCountryRepository() *CountryRepository {
 	return &CountryRepository{
 		[]*Country{
-			&Country{ID: 360, Name: "Indonesia"},
+			&Country{ID: "ID", Name: "Indonesia"},
 		},
 	}
 }

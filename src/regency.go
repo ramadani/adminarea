@@ -2,9 +2,9 @@ package src
 
 // Regency entity
 type Regency struct {
-	ID       uint
+	ID       string
 	Name     string
-	ParentID uint
+	ParentID string
 }
 
 // RegencyContract for contract to regency

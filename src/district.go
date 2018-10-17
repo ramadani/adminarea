@@ -2,9 +2,9 @@ package src
 
 // District entity
 type District struct {
-	ID       uint
+	ID       string
 	Name     string
-	ParentID uint
+	ParentID string
 }
 
 // DistrictContract for contract to district

@@ -2,9 +2,9 @@ package src
 
 // Province entity
 type Province struct {
-	ID       uint
+	ID       string
 	Name     string
-	ParentID uint
+	ParentID string
 }
 
 // ProvinceContract for contract to province
