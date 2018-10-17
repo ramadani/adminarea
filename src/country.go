@@ -21,8 +21,8 @@ type CountryRepository struct {
 	countries []*Country
 }
 
-// GetCountry by id
-func (c *CountryRepository) GetCountry(id string) (*Country, error) {
+// FindByID by id
+func (c *CountryRepository) FindByID(id string) (*Country, error) {
 	for _, country := range c.countries {
 		if id == country.ID {
 			return country, nil

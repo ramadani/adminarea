@@ -17,10 +17,10 @@ func TestGetProvinces(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id, _ := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.FindByID("ID")
 
 	province := indonesia.NewProvince(id.ID, contents)
-	provinces, err := province.GetProvinces()
+	provinces, err := province.All()
 
 	assert.Nil(t, err)
 	assert.Equal(t, 34, len(provinces))

@@ -9,5 +9,5 @@ type Province struct {
 
 // ProvinceContract for contract to province
 type ProvinceContract interface {
-	GetProvinces() ([]*Province, error)
+	All() ([]*Province, error)
 }

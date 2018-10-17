@@ -9,5 +9,5 @@ type District struct {
 
 // DistrictContract for contract to district
 type DistrictContract interface {
-	GetDistricts() ([]*District, error)
+	All() ([]*District, error)
 }

@@ -9,5 +9,5 @@ type Village struct {
 
 // VillageContract for contract to village
 type VillageContract interface {
-	GetVillages() ([]*Village, error)
+	All() ([]*Village, error)
 }

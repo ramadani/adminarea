@@ -17,10 +17,10 @@ func TestGetDistricts(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id, _ := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.FindByID("ID")
 
 	district := indonesia.NewDistrict(id.ID, contents)
-	districts, err := district.GetDistricts()
+	districts, err := district.All()
 
 	assert.Nil(t, err)
 	assert.Equal(t, 7215, len(districts))

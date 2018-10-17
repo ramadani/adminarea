@@ -9,5 +9,5 @@ type Regency struct {
 
 // RegencyContract for contract to regency
 type RegencyContract interface {
-	GetRegencies() ([]*Regency, error)
+	All() ([]*Regency, error)
 }

@@ -14,8 +14,8 @@ type Regency struct {
 	contents  []byte
 }
 
-// GetRegencies get all regency of indonesia
-func (rg *Regency) GetRegencies() ([]*src.Regency, error) {
+// All get all regency of indonesia
+func (rg *Regency) All() ([]*src.Regency, error) {
 	var regencies []*src.Regency
 
 	reader := csv.NewReader(bytes.NewReader(rg.contents))

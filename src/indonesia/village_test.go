@@ -17,10 +17,10 @@ func TestGetVillages(t *testing.T) {
 	}
 
 	countryRepo := src.NewCountryRepository()
-	id, _ := countryRepo.GetCountry("ID")
+	id, _ := countryRepo.FindByID("ID")
 
 	village := indonesia.NewVillage(id.ID, contents)
-	villages, err := village.GetVillages()
+	villages, err := village.All()
 
 	assert.Nil(t, err)
 	assert.Equal(t, 80534, len(villages))

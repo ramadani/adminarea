@@ -14,8 +14,8 @@ type Province struct {
 	contents  []byte
 }
 
-// GetProvinces get all province
-func (pr *Province) GetProvinces() ([]*src.Province, error) {
+// All get all province
+func (pr *Province) All() ([]*src.Province, error) {
 	var provinces []*src.Province
 
 	reader := csv.NewReader(bytes.NewReader(pr.contents))

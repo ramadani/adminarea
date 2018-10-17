@@ -14,8 +14,8 @@ type District struct {
 	contents  []byte
 }
 
-// GetDistricts get all district of indonesia
-func (ds *District) GetDistricts() ([]*src.District, error) {
+// All get all district of indonesia
+func (ds *District) All() ([]*src.District, error) {
 	var districts []*src.District
 
 	reader := csv.NewReader(bytes.NewReader(ds.contents))

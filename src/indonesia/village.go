@@ -14,8 +14,8 @@ type Village struct {
 	contents  []byte
 }
 
-// GetVillages get all village of indonesia
-func (vl *Village) GetVillages() ([]*src.Village, error) {
+// All get all village of indonesia
+func (vl *Village) All() ([]*src.Village, error) {
 	var villages []*src.Village
 
 	reader := csv.NewReader(bytes.NewReader(vl.contents))
