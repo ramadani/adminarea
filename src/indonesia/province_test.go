@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	idres "github.com/ramadani/adminarea/resources/indonesia"
+	"github.com/ramadani/adminarea/src"
 	"github.com/ramadani/adminarea/src/indonesia"
 	"github.com/stretchr/testify/assert"
 )
@@ -15,7 +16,10 @@ func TestGetProvinces(t *testing.T) {
 		log.Fatal(err)
 	}
 
-	province := indonesia.NewProvince(contents)
+	countryRepo := src.NewCountryRepository()
+	id := countryRepo.GetCountry(360)
+
+	province := indonesia.NewProvince(id.ID, contents)
 	provinces, err := province.GetProvinces()
 
 	assert.Nil(t, err)

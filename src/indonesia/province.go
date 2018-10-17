@@ -11,7 +11,8 @@ import (
 
 // Province province of indonesia
 type Province struct {
-	contents []byte
+	countryID uint
+	contents  []byte
 }
 
 // GetProvinces get all province
@@ -29,8 +30,9 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 
 		id, _ := strconv.Atoi(line[0])
 		provinces = append(provinces, &src.Province{
-			ID:   uint(id),
-			Name: line[1],
+			ID:       uint(id),
+			Name:     line[1],
+			ParentID: pr.countryID,
 		})
 	}
 
@@ -38,6 +40,6 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 }
 
 // NewProvince instance of indonesia provinces
-func NewProvince(contents []byte) *Province {
-	return &Province{contents}
+func NewProvince(countryID uint, contents []byte) *Province {
+	return &Province{countryID, contents}
 }
