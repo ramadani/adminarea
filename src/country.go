@@ -1,5 +1,9 @@
 package src
 
+import (
+	"fmt"
+)
+
 // Country entity
 type Country struct {
 	ID   string
@@ -34,4 +38,9 @@ func NewCountryRepository() *CountryRepository {
 			&Country{ID: "ID", Name: "Indonesia"},
 		},
 	}
+}
+
+// AreaID to generate area id
+func AreaID(id, subid string) string {
+	return fmt.Sprintf("%s-%s", id, subid)
 }

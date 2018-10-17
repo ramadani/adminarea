@@ -10,7 +10,8 @@ import (
 
 // Regency regency of indonesia
 type Regency struct {
-	contents []byte
+	countryID string
+	contents  []byte
 }
 
 // GetRegencies get all regency of indonesia
@@ -27,9 +28,9 @@ func (rg *Regency) GetRegencies() ([]*src.Regency, error) {
 		}
 
 		regencies = append(regencies, &src.Regency{
-			ID:       line[0],
+			ID:       src.AreaID(rg.countryID, line[0]),
 			Name:     line[2],
-			ParentID: line[1],
+			ParentID: src.AreaID(rg.countryID, line[1]),
 		})
 	}
 
@@ -37,6 +38,6 @@ func (rg *Regency) GetRegencies() ([]*src.Regency, error) {
 }
 
 // NewRegency instance of indonesia regency
-func NewRegency(contents []byte) *Regency {
-	return &Regency{contents}
+func NewRegency(countryID string, contents []byte) *Regency {
+	return &Regency{countryID, contents}
 }

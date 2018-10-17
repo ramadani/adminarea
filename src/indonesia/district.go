@@ -10,7 +10,8 @@ import (
 
 // District district of indonesia
 type District struct {
-	contents []byte
+	countryID string
+	contents  []byte
 }
 
 // GetDistricts get all district of indonesia
@@ -27,9 +28,9 @@ func (ds *District) GetDistricts() ([]*src.District, error) {
 		}
 
 		districts = append(districts, &src.District{
-			ID:       line[0],
+			ID:       src.AreaID(ds.countryID, line[0]),
 			Name:     line[2],
-			ParentID: line[1],
+			ParentID: src.AreaID(ds.countryID, line[1]),
 		})
 	}
 
@@ -37,6 +38,6 @@ func (ds *District) GetDistricts() ([]*src.District, error) {
 }
 
 // NewDistrict instance of indonesia district
-func NewDistrict(contents []byte) *District {
-	return &District{contents}
+func NewDistrict(countryID string, contents []byte) *District {
+	return &District{countryID, contents}
 }

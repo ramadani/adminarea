@@ -10,7 +10,8 @@ import (
 
 // Village village of indonesia
 type Village struct {
-	contents []byte
+	countryID string
+	contents  []byte
 }
 
 // GetVillages get all village of indonesia
@@ -27,9 +28,9 @@ func (vl *Village) GetVillages() ([]*src.Village, error) {
 		}
 
 		villages = append(villages, &src.Village{
-			ID:       line[0],
+			ID:       src.AreaID(vl.countryID, line[0]),
 			Name:     line[2],
-			ParentID: line[1],
+			ParentID: src.AreaID(vl.countryID, line[1]),
 		})
 	}
 
@@ -37,6 +38,6 @@ func (vl *Village) GetVillages() ([]*src.Village, error) {
 }
 
 // NewVillage instance of indonesia village
-func NewVillage(contents []byte) *Village {
-	return &Village{contents}
+func NewVillage(countryID string, contents []byte) *Village {
+	return &Village{countryID, contents}
 }

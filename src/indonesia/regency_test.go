@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	idres "github.com/ramadani/adminarea/resources/indonesia"
+	"github.com/ramadani/adminarea/src"
 
 	"github.com/ramadani/adminarea/src/indonesia"
 	"github.com/stretchr/testify/assert"
@@ -16,7 +17,10 @@ func TestGetRegencies(t *testing.T) {
 		log.Fatal(err)
 	}
 
-	regency := indonesia.NewRegency(contents)
+	countryRepo := src.NewCountryRepository()
+	id := countryRepo.GetCountry("ID")
+
+	regency := indonesia.NewRegency(id.ID, contents)
 	regencies, err := regency.GetRegencies()
 
 	assert.Nil(t, err)

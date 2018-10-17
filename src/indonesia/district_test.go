@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	idres "github.com/ramadani/adminarea/resources/indonesia"
+	"github.com/ramadani/adminarea/src"
 	"github.com/ramadani/adminarea/src/indonesia"
 	"github.com/stretchr/testify/assert"
 )
@@ -15,7 +16,10 @@ func TestGetDistricts(t *testing.T) {
 		log.Fatal(err)
 	}
 
-	district := indonesia.NewDistrict(contents)
+	countryRepo := src.NewCountryRepository()
+	id := countryRepo.GetCountry("ID")
+
+	district := indonesia.NewDistrict(id.ID, contents)
 	districts, err := district.GetDistricts()
 
 	assert.Nil(t, err)

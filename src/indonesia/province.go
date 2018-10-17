@@ -28,7 +28,7 @@ func (pr *Province) GetProvinces() ([]*src.Province, error) {
 		}
 
 		provinces = append(provinces, &src.Province{
-			ID:       line[0],
+			ID:       src.AreaID(pr.countryID, line[0]),
 			Name:     line[1],
 			ParentID: pr.countryID,
 		})
