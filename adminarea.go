@@ -10,10 +10,16 @@ import (
 
 // AdminArea to get administrative areas of country
 type AdminArea struct {
+	country  *src.Country
 	province src.ProvinceContract
 	regency  src.RegencyContract
 	district src.DistrictContract
 	village  src.VillageContract
+}
+
+// GetCountry of adminarea
+func (aa *AdminArea) GetCountry() *src.Country {
+	return aa.country
 }
 
 // GetProvinces get provinces by country
@@ -78,6 +84,7 @@ func New(countryID string) *AdminArea {
 	}
 
 	return &AdminArea{
+		country,
 		province,
 		regency,
 		district,

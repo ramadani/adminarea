@@ -7,6 +7,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestGetCountryDataOfIndonesia(t *testing.T) {
+	assert := assert.New(t)
+	idAdminArea := adminarea.New("ID")
+	country := idAdminArea.GetCountry()
+
+	assert.NotNil(country)
+	assert.Equal(country.Name, "Indonesia")
+}
+
 func TestIndonesiaGetProvinces(t *testing.T) {
 	assert := assert.New(t)
 	idAdminArea := adminarea.New("ID")

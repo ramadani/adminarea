@@ -11,11 +11,6 @@ type Country struct {
 	Name string
 }
 
-// CountryContract for contract to country
-type CountryContract interface {
-	GetCountry(id string) *Country
-}
-
 // CountryRepository country repository
 type CountryRepository struct {
 	countries []*Country
