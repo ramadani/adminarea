@@ -1,11 +1,34 @@
 # adminarea
 
-Administrative Area
+Get provinces, cities/districts, districts and villages from a country
 
 ## Installation
 
 ```cmd
 go get github.com/ramadani/adminarea
+```
+
+## Usage
+
+Available Country
+- Indonesia (ID)
+
+```go
+import "github.com/ramadani/adminarea"
+
+idAdminArea := adminarea.New("ID")
+
+// get provinces
+provinces, err := idAdminArea.GetProvinces()
+
+// get regencies
+regencies, err := idAdminArea.GetRegencies()
+
+// get districts
+districts, err := idAdminArea.GetDistricts()
+
+// get villages
+villages, err := idAdminArea.GetVillages()
 ```
 
 ## References
