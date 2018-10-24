@@ -18,6 +18,9 @@ import "github.com/ramadani/adminarea"
 
 idAdminArea := adminarea.New("ID")
 
+// get country
+country := idAdminArea.GetCountry()
+
 // get provinces
 provinces, err := idAdminArea.GetProvinces()
 

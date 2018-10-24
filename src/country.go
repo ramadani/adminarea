@@ -31,7 +31,7 @@ func (c *CountryRepository) FindByID(id string) (*Country, error) {
 func NewCountryRepository() *CountryRepository {
 	return &CountryRepository{
 		[]*Country{
-			&Country{ID: "ID", Name: "Indonesia"},
+			&Country{ID: "ID", Name: "INDONESIA"},
 		},
 	}
 }
